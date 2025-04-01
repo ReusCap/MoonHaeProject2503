@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\TaeeunPark\\Moonhaeproject\\Project1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9D4FA333-1DBF-4260-AB63-CB392403E261}|Project1\\Project1.vcxproj|C:\\TaeeunPark\\Moonhaeproject\\Project1\\Project1\\taeeun.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9D4FA333-1DBF-4260-AB63-CB392403E261}|Project1\\Project1.vcxproj|solutionrelative:Project1\\taeeun.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D4FA333-1DBF-4260-AB63-CB392403E261}|Project1\\Project1.vcxproj|C:\\TaeeunPark\\Moonhaeproject\\Project1\\Project1\\\uBC15\uD0DC\uC740.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9D4FA333-1DBF-4260-AB63-CB392403E261}|Project1\\Project1.vcxproj|solutionrelative:Project1\\\uBC15\uD0DC\uC740.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "taeeun.cpp",
+              "DocumentMoniker": "C:\\TaeeunPark\\Moonhaeproject\\Project1\\Project1\\taeeun.cpp",
+              "RelativeDocumentMoniker": "Project1\\taeeun.cpp",
+              "ToolTip": "C:\\TaeeunPark\\Moonhaeproject\\Project1\\Project1\\taeeun.cpp",
+              "RelativeToolTip": "Project1\\taeeun.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-26T17:53:16.757Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "\uBC15\uD0DC\uC740.cpp",
+              "DocumentMoniker": "C:\\TaeeunPark\\Moonhaeproject\\Project1\\Project1\\\uBC15\uD0DC\uC740.cpp",
+              "RelativeDocumentMoniker": "Project1\\\uBC15\uD0DC\uC740.cpp",
+              "ToolTip": "C:\\TaeeunPark\\Moonhaeproject\\Project1\\Project1\\\uBC15\uD0DC\uC740.cpp",
+              "RelativeToolTip": "Project1\\\uBC15\uD0DC\uC740.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-26T17:52:20.597Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
