@@ -3,7 +3,7 @@
 
 using namespace std;
 
-// 화보의 종류 수 구하는 함수수
+// 화보의 종류 수 구하는 함수
 int getElementTypeCount(int data[], int n){
     // 만약 n이 0이면 종류수가 0이니 0을 리턴한다.
     if (n==0){
@@ -22,7 +22,7 @@ int getElementTypeCount(int data[], int n){
     return countType;
 }   
 
-// 메인함수수
+// 메인함수
 int main(){
     int n;  // 입력받을 화보 수 n 
     int* data;  // 동적 배열 포인터 생성
