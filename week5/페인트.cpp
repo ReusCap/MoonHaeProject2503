@@ -5,7 +5,7 @@ const int MAX_SEAT_NUMBER = 1000;   // 좌석 최대 개수
 const int MAX_COLOR_NUMBER = 100;   // 색깔 최대 개수 
 
 // 좌석들을 한 번 색칠하는 이벤트에 대한 정보 담는 클래스
-class Painting{
+class SudokuBoard{
 // public (접근지정자) 클래스 외부 접근 가능
 public:
     // 색칠 범위 왼쪽, 오른쪽, 색깔 번호
@@ -14,10 +14,10 @@ public:
     int color;
 
     // 기본 생성자
-    Painting() {}
+    SudokuBoard() {}
     
     // 매개변수 받는 생성자
-    Painting(int left, int right, int color){
+    SudokuBoard(int left, int right, int color){
         // 각각 입력받아 초기화 시켜줌.
         this->left =left;
         this->right = right;
@@ -38,7 +38,7 @@ void fillFrequencyTable(int data[], int n, int table[]){
     }
 } 
 // 주어진 색칠 이벤트들을 적용한 후, 가장 많이, 가장 적게 사용된 색깔 번호를 출력
-void solve(int n, int m, const Painting* paintings){
+void solve(int n, int m, const SudokuBoard* paintings){
     // 좌석 배열 설정 및 초기화
     int* seats = new int[n];
     
@@ -49,7 +49,7 @@ void solve(int n, int m, const Painting* paintings){
 
     // 색칠 이벤트 순차적으로 적용
     for (int i=0; i<m;  i++){
-        const Painting &p = paintings[i];
+        const SudokuBoard &p = paintings[i];
 
         // 각 이벤트마다 해당 구간을 지정한 색으로 덮어 칠함
         for (int j= p.left; j <= p.right; j++){
@@ -97,7 +97,7 @@ int main()
     scanf("%d %d", &n, &m);
     
     // 색칠 이벤트 저장할 배열 동적 할당
-    Painting* paintings = new Painting[m];
+    SudokuBoard* paintings = new SudokuBoard[m];
 
     // 색칠 이벤트 입력받기
     for (int i=0; i<m; i++)
