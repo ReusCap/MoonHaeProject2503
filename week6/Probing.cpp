@@ -38,7 +38,7 @@ public:
 };
 
 // n개의 티켓 중에서, m명의 사용자에게 티켓 번호를 부여하는 함수
-// 입력: 티켓 개수 n, 고객객 수 m, 사용자 ID 리스트
+// 입력: 티켓 개수 n, 고객 수 m, 사용자 ID 리스트
 // 출력: 사용자에게 부여된 티켓 번호 리스트
 vector<int> getTicketNumbers(int n, int m, const vector<int>& ids){
     // 티켓 번호 저장 vector

@@ -1,98 +1,120 @@
-#include <cstdio>   // C 스타일 입출력
-#include <vector>   // 벡터 사용
-#include <algorithm>    // min 함수 사용
-using namespace std;
+#include <cstdio>   // C 스타일 입출력을 위한 헤더파일
+#include <vector>   // 벡터 사용을 위한 헤더파일
+using namespace std;    // std:: 생략 위해
 
-// 무승부를 최소화하며 가능한 경기 점수 조합을 구하는 클래스
-class MatchDrawSolver {
-    int n, a, b;           // 경기 수, 총 득점, 총 실점
-    int minDraws;          // 최소 무승부 수
-    vector<int> bestX, bestY; // 최적 점수 저장용
-    vector<int> pathX, pathY; // 현재 DFS 탐색 중 점수 경로
-
-    // DFS 함수
-    void dfs(int idx, int sumX, int sumY, int draws) {
-        // 가지치기: 점수 초과
-        if (sumX > a || sumY > b) return;
-
-        // 가지치기: 무승부 수 초과
-        if (draws > minDraws) return;
-
-        // 가지치기: 남은 경기로 목표 점수 도달 불가
-        int remain = n - idx;
-        if (sumX + remain * 10 < a || sumY + remain * 10 < b) return;
-        if (sumX + remain * 0 > a || sumY + remain * 0 > b) return;
-
-        // 종료 조건: 모든 경기 소화
-        if (idx == n) {
-            if (sumX == a && sumY == b) {
-                if (draws < minDraws) {
-                    minDraws = draws;
-                    bestX = pathX;
-                    bestY = pathY;
-                }
+// 득점/실점을 번갈아가며 경기 결과를 초기 분배하는 함수
+// (무승부 최소화를 위해 가능한 한 한쪽 팀에만 점수를 먼저 배분)
+// 쉽게 말해 홀수번 째 경기는 1:0, 짝수번 째 경기는 0:1 이런식으로 우선 분배
+// 매개변수 a, b, GwangjuFC, OpponentFC를 &로 참조 받아서 실제 값에 접근 가능하게 한다.
+void assignGoalsAlternately(int n, int &a, int &b, vector<int> &GwangjuFC, vector<int> &OpponentFC) {
+    // n경기 만큼 for문 순회
+    for (int i = 0; i < n; i++) {
+        // 짝수 번째 경기: 광주FC 우선
+        if (i % 2 == 0) {
+            // a가 0보다 크면 광주FC에 1점 줘서 1:0으로 만듦
+            if (a > 0) {
+                GwangjuFC[i] = 1;
+                a--;
             }
-            return;
+            // a가 0이고, b가 0보다 크면 상대팀에 1점 줘서 0:1으로 만듦
+            else if (b > 0) {
+                OpponentFC[i] = 1;
+                b--;
+            }
         }
-
-        // 점수 조합 시도
-        for (int i = 0; i <= min(10, a - sumX); i++) {
-            for (int j = 0; j <= min(10, b - sumY); j++) {
-                pathX.push_back(i);
-                pathY.push_back(j);
-                dfs(idx + 1, sumX + i, sumY + j, draws + (i == j ? 1 : 0));
-                pathX.pop_back();
-                pathY.pop_back();
+        // 홀수 번째 경기: 상대팀 우선
+        else {
+            // b가 0보다 크면 상대팀에 1점 줘서 0:1으로 만듦
+            if (b > 0) {
+                OpponentFC[i] = 1;
+                b--;
+            } 
+            // b가 0이고, a가 0보다 크면 광주FC에 1점 줘서 1:0으로 만듦
+            else if (a > 0) {
+                GwangjuFC[i] = 1;
+                a--;
             }
         }
     }
+}
 
-public:
-    // 생성자
-    MatchDrawSolver(int n, int a, int b) : n(n), a(a), b(b), minDraws(n) {}
-
-    // 계산 시작
-    bool solve() {
-        // 예외 처리: n == 1일 경우 DFS 불필요
-        if (n == 1) {
-            if (a <= 10 && b <= 10) {
-                minDraws = (a == b ? 1 : 0);
-                bestX.push_back(a);
-                bestY.push_back(b);
-                return true;
-            }
-            return false; // 불가능한 점수 조합
-        }
-
-        dfs(0, 0, 0, 0);  // DFS 시작
-        return !bestX.empty();
-    }
-
-    // 결과 출력
-    void print() {
-        printf("%d\n", minDraws);
-        for (int i = 0; i < n; i++) {
-            printf("%d:%d\n", bestX[i], bestY[i]);
+// 남은 득점/실점 수치를 이미 점수가 있는 경기에 몰아주는 함수
+// (무승부 발생을 방지하기 위해, 점수가 이미 들어간 경기에만 분배)
+// team에는 광주FC 또는 상대팀 벡터가 들어오고, remainingGoals에는 a 또는 b가 들어옴
+// 모두 &로 참조받아서 실제값 접근
+void distributeRemainingGoals(vector<int> &team, int &remainingGoals) {
+    // remainingGoals가 0보다 클 동안, 팀의 경기 수만큼 순회
+    // 1골 이상 득점한 경기를 발견하면 그 경기에 남은 골을 모두 몰아줌
+    // 예: 광주FC가 1:0인 경기를 발견하면 남은 골 모두 더해 3:0처럼 만듦
+    for (int i = 0; remainingGoals > 0 && i < team.size(); i++) {
+        // 해당 경기가 1골 이상이면 남은 골 전부 더함
+        if (team[i] > 0) {
+            // 다 넣어주고, remainingGoals는 0으로 초기화시켜줌
+            team[i] += remainingGoals;
+            remainingGoals = 0;
         }
     }
-};
+
+    // 만약 모두 0골이라서 위에서 배분 못했다면, 어쩔 수 없이 첫 경기에 몰아준다.
+    if (remainingGoals > 0) {
+        // 모든 골 몰아주고 remainingGoasl 0으로 초기화
+        team[0] += remainingGoals;
+        remainingGoals = 0;
+    }
+}
+
+// 각 경기에서 동점(무승부)이 발생한 경기 수를 세는 함수
+// const &를 사용해 벡터를 복사하지 않고, 원본을 읽기 전용으로 참조함
+int countDrawMatches(const vector<int> &GwangjuFC, const vector<int> &OpponentFC) {
+    // 카운트를 0으로 초기화
+    int count = 0;
+    // 광주FC와 상대팀 인덱스별로 동점이 있으면 count 증가
+    for (int i = 0; i < GwangjuFC.size(); i++) {
+        if (GwangjuFC[i] == OpponentFC[i]) {
+            count++;
+        }
+    }
+    // count값 반환환
+    return count;
+}
+
+// 최종 경기 결과 출력 함수
+// const &를 사용해 벡터를 복사하지 않고, 원본을 읽기 전용으로 참조함
+void printMatches(const vector<int> &GwangjuFC, const vector<int> &OpponentFC) {
+    // 벡터 사이즈만큼 for문 순회
+    for (int i = 0; i < GwangjuFC.size(); i++) {
+        // %d:%d\n으로 줄바꿈하며 경기 결과 출력
+        printf("%d:%d\n", GwangjuFC[i], OpponentFC[i]);
+    }
+}
 
 // 메인 함수
-int main()
-{
-    int n, a, b;
+int main() {
+    int n, a, b; // n: 총 경기 수, a: 광주FC 총 득점, b: 총 실점
+
+    // 사용자 입력 받기
     scanf("%d", &n);
     scanf("%d", &a);
     scanf("%d", &b);
 
-    MatchDrawSolver solver(n, a, b);
+    // 각 경기의 득점/실점을 저장할 벡터 초기화
+    vector<int> gwangjuFC(n, 0), opponentFC(n, 0);
 
-    // 불가능한 경우 예외 처리
-    if (solver.solve()) {
-        solver.print();
-    } else {
-        printf("-1\n"); // 불가능한 경우 출력 (문제 조건엔 없지만 안정성 위해)
-    }
+    // 득점/실점을 번갈아가며 먼저 배분
+    assignGoalsAlternately(n, a, b, gwangjuFC, opponentFC);
+
+    // 남은 득점/실점을 기존에 점수가 있는 경기로 몰아줌
+    // 광주FC, 상대팀 각각 함수 수행
+    distributeRemainingGoals(gwangjuFC, a);
+    distributeRemainingGoals(opponentFC, b);
+
+    // 무승부 경기 수 계산
+    int drawCount = countDrawMatches(gwangjuFC, opponentFC);
+    // 무승부 경기 수 출력
+    printf("%d\n", drawCount);
+
+    // 각 경기의 득점 결과 출력
+    printMatches(gwangjuFC, opponentFC);
 
     return 0;
 }
