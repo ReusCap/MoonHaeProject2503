@@ -2,6 +2,7 @@
     "files.associations": {
         "cstdio": "cpp",
         "algorithm": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "iomanip": "cpp"
     }
 }
