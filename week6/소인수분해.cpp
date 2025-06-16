@@ -39,7 +39,7 @@ void process(int caseIndex){
 
     // 케이스 번호 출력
     printf("#%d:\n", caseIndex);
-    // 배열 사이즈 만큼 공백 두고 출력력
+    // 배열 사이즈 만큼 공백 두고 출력
     for (int i=0; i< factors.size(); ++i){
         // 첫번째 인덱스 아니면 공백 앞에 둠
         if(i>0){

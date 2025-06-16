@@ -1,3 +1,4 @@
+// 합구하기1 
 #include<stdio.h>
 #include<iostream>
 

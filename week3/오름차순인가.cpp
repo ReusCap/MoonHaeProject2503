@@ -36,10 +36,10 @@ int main(){
         scanf("%d", &data[i]);
     }
 
-    // result변수에 isOrdered함수 리턴값 저장장
+    // result변수에 isOrdered함수 리턴값 저장
     bool result = isOrdered(data,n);
 
-    // result 값에 따라 Yes, No 출력력
+    // result 값에 따라 Yes, No 출력
     if (result){
         printf("YES");
     }

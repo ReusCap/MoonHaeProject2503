@@ -53,8 +53,9 @@ long long getLargestRectangleArea(const vector<Histogram>& histograms) {
 
 		// 현재 막대가 스택에 있는 마지막 막대보다 작거나 같은 경우
 		// 스택에 쌓여 있던 막대는 더 이상 오른쪽으로 확장할 수 없다고 판단하고 넓이를 계산하고 POP
+		// 예시 2 1 4 5 1 3 3 
 		while (sdk.size() > 1 && sdk.top().height >= h.height){
-			// 확장이 종료된 막대를 꺼낸다
+			// 확장이 종료된 막대를 꺼낸다 (0과 2가 들어있는데, 1 들어오면 2를 pop하고 기존 높이 2와 밑변 1 넓이 = 2 구함)
 			Histogram lh = sdk.top();
 			sdk.pop();
 

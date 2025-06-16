@@ -20,7 +20,7 @@ int findIndex(int data[], int n)
         sum += data[i];
     }
 
-    // for문으로 평균과 가까운 인덱스 값 업데이트트
+    // for문으로 평균과 가까운 인덱스 값 업데이트
     for (int i = 0; i < n; i++) {
         // dx는 기존 x인덱스 값과 평균의 차이 저장
         int dx = abs(n * data[x] - sum);
@@ -40,7 +40,7 @@ int main() {
     int n;        // 배열의 크기 저장 변수
     int* data;    // 동적 할당할 정수형 배열 포인터
 
-    // scanf로 n값 입력 받음음
+    // scanf로 n값 입력 받음
     scanf("%d", &n);
 
     // 동적 메모리 할당

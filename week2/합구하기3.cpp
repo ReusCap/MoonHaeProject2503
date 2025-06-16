@@ -5,7 +5,7 @@ using namespace std;
 
 // 1부터 i까지의 모든 수를 더하는 함수
 int getRangeSumFromOne(int i){
-    // 1부터 i이하하까지 모두 더한 수수 저장하는 변수 answer 
+    // 1부터 i이하까지 모두 더한 수 저장하는 변수 answer 
     int answer = 0;
 
     // 1부터 i이하까지 for문으로 전부 더한다.

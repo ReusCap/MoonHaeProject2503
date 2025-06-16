@@ -29,22 +29,22 @@ int main(){
     height = new int[n];    // height 동적 할당 
     month = new int[n];     // month 동적 할당
 
-    // height 배열 값 입력력
+    // height 배열 값 입력
     for (int i=0; i<n; i++)
     {
         scanf("%d", &height[i]);
     }
 
-    // month 배열 값 입력력
+    // month 배열 값 입력
     for (int i=0; i<n; i++)
     {
         scanf("%d", &month[i]);
     }
 
-    // 현재 달 입력력
+    // 현재 달 입력
     scanf("%d", &m);
 
-    // answer변수에 getMaximumHeihgt함수 반환값 저장장
+    // answer변수에 getMaximumHeihgt함수 반환값 저장
     int answer = getMaximumHeight(height, month, n, m);
     
     // answer값 출력

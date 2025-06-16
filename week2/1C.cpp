@@ -1,3 +1,5 @@
+// 카운팅 하기
+// 사람수 두명 입력하고, 그와 동일한 사람수 세기
 #include<stdio.h>
 #include<iostream>
 

@@ -8,7 +8,7 @@ int getMinIndexInRange(int data[], int n, int begin, int end){
     // 최소값의 인덱스 저장 변수 index를 begin으로 초기화
     int index = begin;
 
-    // begin부터 end까지 최솟값 인덱스 찾아서 업데이트트
+    // begin부터 end까지 최솟값 인덱스 찾아서 업데이트
     for (int i=begin; i <= end; i++){
         if(data[index]> data[i]){
             index=i;
@@ -41,7 +41,7 @@ int main(){
     // 동적 메모리 할당
     data = new int[n];
 
-    // for문으로 n개의 정수 입력받아 배열에 저장장
+    // for문으로 n개의 정수 입력받아 배열에 저장
     for (int i=0; i<n; i++)
     {
         scanf("%d", &data[i]);

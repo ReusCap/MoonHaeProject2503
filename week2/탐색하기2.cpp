@@ -1,3 +1,4 @@
+// 첫 인덱스와 마지막 인덱스 찾기
 #include<stdio.h>   // C 스타일 입출력 사용을 위한 헤더 파일
 #include<string>    // C++ string 클래스를 사용하기 위한 헤더 파일
 #include<iostream>  // C++ 스타일 입출력 사용을 위한 헤더 파일
@@ -40,7 +41,7 @@ int main(){
     // 사용자로부터 문자열 입력 받기
     for (int i=0; i<n; i++)
     {
-        scanf("%s", buff);  // buff에 문자열 임시로 받고고
+        scanf("%s", buff);  // buff에 문자열 임시로 받고
         school[i] = buff;   // string 객체에 저장
     }
 

@@ -88,7 +88,7 @@ void process(int caseIndex, const Sieve& sieve) {
 int main()
 {   
     const int MAX_VALUE = 1000000;  // 전처리
-    Sieve sieve = Sieve(MAX_VALUE); // 전처리, Sieve는 체라는 뜻, MAX_VALUE크기로 sieve객체 전처리 생성성
+    Sieve sieve = Sieve(MAX_VALUE); // 전처리, Sieve는 체라는 뜻, MAX_VALUE크기로 sieve객체 전처리 생성
 
     // 테스트 케이스 선언
     int caseSize;

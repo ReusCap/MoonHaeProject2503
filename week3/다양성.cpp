@@ -18,7 +18,7 @@ int getElementTypeCount(int data[], int n){
             countType++;
         }
     }
-    // 종류 개수 리턴턴
+    // 종류 개수 리턴
     return countType;
 }   
 

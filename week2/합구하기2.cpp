@@ -13,7 +13,7 @@ void solve(int data[], int n, int p, int q){
             weight_sum+=data[i];    // weight_sum에 무게 추가가
         }
     }
-    // count와 weight_sum 출력력
+    // count와 weight_sum 출력
     printf("%d %d\n", count, weight_sum);
 
     // weight_sum의 합이 q 이하이면 "YES" 출력, 그렇지 않으면 "NO" 출력

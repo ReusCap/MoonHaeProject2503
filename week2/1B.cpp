@@ -1,3 +1,4 @@
+// 배열의 최대값 구하기
 #include<stdio.h>
 #include<iostream>
 
