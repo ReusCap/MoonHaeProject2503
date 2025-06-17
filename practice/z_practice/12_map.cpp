@@ -13,10 +13,10 @@ int main() {
     for (int i=0; i<N; i++){
         string s;
         cin >> s;
+        // 해당 이름 value증가
         m[s]++;
-        int k = m[s];
         if(m[s]>maxpoll){
-            maxpoll=k;
+            maxpoll=m[s];
         }
     }
     cout<< maxpoll << endl;
@@ -25,6 +25,7 @@ int main() {
             cout<< it->first << ' ';
         }
     }    
+    // 아래는 아님
     auto it = m.find("apple");
     if (it != m.end()) {
         cout << "찾음: " << it->second << '\n';

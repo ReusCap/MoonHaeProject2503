@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-// 3주차 오름차순인지 판단하는는 문제
+// 3주차 오름차순인지 판단하는 문제
 int main() {
     int n;
     cin >> n;

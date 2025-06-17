@@ -7,6 +7,7 @@ bool visited[MAX_NODES];        // 방문 여부
 int edgeCount;                  // 간선 수
 
 // 인접 행렬 초기화
+// visited도 0으로 초기화
 void init() {
     for (int i = 0; i < MAX_NODES; ++i) {
         for (int j = 0; j < MAX_NODES; ++j) {
