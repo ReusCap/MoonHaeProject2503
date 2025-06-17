@@ -16,14 +16,12 @@ void bfs(int start) {
     visited[start] = true;
     q.push(start);
 
-    // while로 큐 비기 전까지 돌려. 
     while (!q.empty()) {
         int current = q.front();
         q.pop();
         cout << current << '\n';
 
         // 인접 노드 탐색
-        // 방문 할때마다 true로 바꾸고 푸시를 한다. 
         for (int next = 1; next <= nodeCount; ++next) {
             if (adj[current][next] && !visited[next]) {
                 visited[next] = true;
