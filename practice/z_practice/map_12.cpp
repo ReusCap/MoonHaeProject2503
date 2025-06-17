@@ -8,25 +8,25 @@ int main() {
     int N;
     cin >> N;
 
-    map<string, int> frequencyMap;
-    int maxFrequency = 0;
-
-    for (int i = 0; i < N; i++) {
-        string st;
-        cin >> st;
-        frequencyMap[st]++;
-        int k = frequencyMap[st];
-        if (k > maxFrequency) {
-            maxFrequency = k;
+    map<string, int> m;
+    int maxpoll = 0;
+    for (int i=0; i<N; i++){
+        string s;
+        cin >> s;
+        m[s]++;
+        int k = m[s];
+        if(m[s]>maxpoll){
+            maxpoll=k;
         }
     }
-
-    cout << maxFrequency << endl;
-
-    for (auto it = frequencyMap.begin(); it != frequencyMap.end(); it++) {
-        if (it->second == maxFrequency) {
-            printf("%s ", it->first.c_str());
+    cout<< maxpoll << endl;
+    for(auto it = m.begin(); it != m.end(); it++){
+        if(it->second == maxpoll){
+            cout<< it->first << ' ';
         }
-    }
-    cout << endl;
+    }    
+    auto it = m.find("apple");
+    if (it != m.end()) {
+        cout << "찾음: " << it->second << '\n';
+    }   
 }
