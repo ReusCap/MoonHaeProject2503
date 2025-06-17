@@ -43,16 +43,11 @@ void testcase(int caseIndex){
     printf("%lld\n", sum * 4);
 }
 
-int main()
-{
-    int caseSize;
-    // 테스트 케이스 개수 입력
-    scanf("%d", &caseSize);
-    // 각 테스트 케이스에 대해 처리
-    // 테스트 케이스 1부터 실행행
-    for (int caseIndex = 1; caseIndex <= caseSize; caseIndex +=1)
-    {
-        testcase(caseIndex);
+int main(){
+    int casesize;
+    cin >> casesize;
+    for(int i = 1; i < casesize; i++){
+        testcase(i);
     }
     return 0;
 }
