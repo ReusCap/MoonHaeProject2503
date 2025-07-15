@@ -24,7 +24,7 @@ int main(){
     for (auto i = s.begin(); i != s.end(); i++) {
         cout << *i << " ";
     }
-
+    
 
     return 0;
 }

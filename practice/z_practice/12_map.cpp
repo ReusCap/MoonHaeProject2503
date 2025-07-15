@@ -30,4 +30,7 @@ int main() {
     if (it != m.end()) {
         cout << "찾음: " << it->second << '\n';
     }   
+    if (it ==m.end()){
+        cout << "못찾음: " << endl;
+    }
 }

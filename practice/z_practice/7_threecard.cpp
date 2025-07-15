@@ -10,7 +10,7 @@ vector<int> getPossibleTargets(int n, int m, int* cards, int* targets) {
     for (int i = 0; i < m; ++i) {
         int k = targets[i];
         bool found = false;
-
+        // j<n && !found; 이게 진짜 중요하다. 이래야지 이중 중첩문 나갈 수 있어. 
         for (int j = 0; j < n && !found; ++j) {
             for (int p = 0; p <= j; ++p) {
                 int z = k - cards[j] - cards[p];

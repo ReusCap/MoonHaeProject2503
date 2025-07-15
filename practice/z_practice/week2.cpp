@@ -3,7 +3,7 @@
 #include <vector>
 
 using namespace std;
-// 개념0. iostream, cstdio, string, vector, stack, queue이정도만
+// 개념0. iostream, cstdio, string, vector, stack, queue, set, 이정도만
 // 개념1. && || !로 and or not표현
 // 개념2. 탐색하기1처럼 초기값 -1로 설정도 유의
 // 개념3. scanf로는 string을 받아오지 못함 cin사용
